@@ -54,4 +54,4 @@ You have the ability to write HTML, CSS, and responsive media queries.  You also
 
 
 My portfolio web-page demo
-![screenshot](https://raw.githubusercontent.com/SamirPaul1/Portfolio-Blog/main/Screenshot_2021-05-17%20%F0%9D%90%92%F0%9D%90%80%F0%9D%90%8C%F0%9D%90%88%F0%9D%90%91%20%F0%9D%90%8F%F0%9D%90%80%F0%9D%90%94%F0%9D%90%8B.png)
+![screenshot](https://raw.githubusercontent.com/SamirPaul1/Portfolio-Blog/main/view.png)

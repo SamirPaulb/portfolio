@@ -59,4 +59,4 @@ You have the ability to write HTML, CSS, and responsive media queries.  You also
 
 
 My portfolio web-page demo
-![screenshot](https://raw.githubusercontent.com/SamirPaul1/Portfolio-Blog/main/view.jpeg)
+<a href="#"> <img alt = "portfolio web-page demo" src="view.jpeg"/> </a>

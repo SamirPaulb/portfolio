@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 15px auto;
   display: block;
   width: 120px;
-  border: 8px solid #2c2f3f;
+  border: 2px solid #e8fffe;
 }
 
 #header .profile h1 {
@@ -86,12 +86,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .profile h1 a, #header .profile h1 a:hover {
-  color: #fff;
+  color: #e8fffe;
   text-decoration: none;
 }
 
 #header .profile .social-links a {
-  font-size: 18px;
+  font-size: 22px;
   display: inline-block;
   background: #212431;
   color: #fff;
@@ -208,6 +208,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 100vh;
   background: url("../img/hero-bg.jpg") top center;
   background-size: cover;
+  background-repeat: no-repeat;  
+  background-position: 0% 0%;
+  background-size: 100% 100%;
 }
 
 #hero:before {
@@ -229,21 +232,23 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 64px;
+  font-size: 72px;
   font-weight: 700;
   line-height: 56px;
-  color: #fff;
+  background: linear-gradient(to right, #7ff9ff, #f55ccf, #ff0078, #fcef3a);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 #hero p {
-  color: #fff;
+  color: #8adeff;
   margin-bottom: 50px;
   font-size: 26px;
   font-family: "Poppins", sans-serif;
 }
 
 #hero p span {
-  color: #fff;
+  color: #8adeff;
   padding-bottom: 4px;
   letter-spacing: 1px;
   border-bottom: 3px solid #149ddd;

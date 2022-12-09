@@ -822,10 +822,10 @@ section {
 
 .contact .php-email-form .validate {
   display: none;
-  color: #0cb85c;
+  color: red;
   margin: 0 0 15px 0;
-  font-weight: 400;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .contact .php-email-form .error-message {

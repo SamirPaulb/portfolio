@@ -822,7 +822,7 @@ section {
 
 .contact .php-email-form .validate {
   display: none;
-  color: red;
+  color: #0cb85c;
   margin: 0 0 15px 0;
   font-weight: 400;
   font-size: 13px;
@@ -831,8 +831,8 @@ section {
 .contact .php-email-form .error-message {
   display: none;
   color: #fff;
-  background: #ed3c0d;
-  text-align: left;
+  background: #0cb85c;
+  text-align: center;
   padding: 15px;
   font-weight: 600;
 }

@@ -145,7 +145,7 @@
       console.log(data);
       var error_msg = "<b>Thanks</b>, The form was submitted successfully!<br>";
       if(data.statusText || data.status) {
-        error_msg += '<a  style="color:#ffffff;" href="https://samirpaul1.github.io">Return to <u style="color:#fa6464;">Home</u> page</a></p>';
+        error_msg += '<a  style="color:#ffffff;" href="https://samirpaulb.github.io">Return to <u style="color:#fa6464;">Home</u> page</a></p>';
         if(data.statusText) {
           error_msg += ' ';
         }

@@ -1,0 +1,273 @@
+---
+title: 'Functions'
+date: '2022-05-03'
+draft: false
+summary: 'In this tutorial, we will learn about functions in Go'
+images: ['/static/courses/go/chapter-I/functions/banner.png']
+authors: ['default']
+---
+
+In this tutorial, we will discuss how we work with functions in Go. So, let's start with a simple function declaration.
+
+## Simple declaration
+
+```go
+func myFunction() {}
+```
+
+And we can _call or execute_ it as follows.
+
+```go
+...
+myFunction()
+...
+```
+
+Let's pass some parameters to it.
+
+```go
+func main() {
+	myFunction("Hello")
+}
+
+func myFunction(p1 string) {
+	fmt.Println(p1)
+}
+```
+
+```bash
+$ go run main.go
+```
+
+As we can see it prints our message. We can also do a shorthand declaration if the consecutive parameters have the same type. For example:
+
+```go
+func myNextFunction(p1, p2 string) {}
+```
+
+## Returning the value
+
+Now let's also return a value.
+
+```go
+func main() {
+	s := myFunction("Hello")
+	fmt.Println(s)
+}
+
+func myFunction(p1 string) string {
+	msg := fmt.Sprintf("%s function", p1)
+	return msg
+}
+```
+
+### Multiple returns
+
+Why return one value at a time, when we can do more? Go also supports multiple returns!
+
+```go
+func main() {
+	s, i := myFunction("Hello")
+	fmt.Println(s, i)
+}
+
+func myFunction(p1 string) (string, int) {
+	msg := fmt.Sprintf("%s function", p1)
+	return msg, 10
+}
+```
+
+### Named returns
+
+Another cool feature is [named returns](https://go.dev/tour/basics/7), where return values can be named and treated as their own variables.
+
+```go
+func myFunction(p1 string) (s string, i int) {
+	s = fmt.Sprintf("%s function", p1)
+	i = 10
+
+	return
+}
+```
+
+Notice how we added a `return` statement without any arguments, this is also known as _naked return_.
+
+I will say that, although this feature is interesting, please use it with care as this might reduce readability for larger functions.
+
+## Functions as values
+
+Next, let's talk about functions as values, in Go functions are first class and we can use them as values. So, let's clean up our function and try it out!
+
+```go
+func myFunction() {
+	fn := func() {
+		fmt.Println("inside fn")
+	}
+
+	fn()
+}
+```
+
+We can also simplify this by making `fn` an _anonymous function_.
+
+```go
+func myFunction() {
+	func() {
+		fmt.Println("inside fn")
+	}()
+}
+```
+
+_Notice how we execute it using the parenthesis at the end._
+
+## Closures
+
+Why stop there? let's also return a function and hence create something called a closure. A simple definition can be that a closure is a function value that references variables from outside its body.
+
+Closures are lexically scoped, which means functions can access the values in scope when defining the function.
+
+```go
+func myFunction() func(int) int {
+	sum := 0
+
+	return func(v int) int {
+		sum += v
+
+		return sum
+	}
+}
+```
+
+```go
+...
+add := myFunction()
+
+add(5)
+fmt.Println(add(10))
+...
+```
+
+As we can see, we get a result of 15 as `sum` variable is _bound_ to the function. This is a very powerful concept and definitely, a must know.
+
+## Variadic Functions
+
+Now let's look at variadic functions, which are functions that can take zero or multiple arguments using the `...` ellipses operator.
+
+An example here would be a function that can add a bunch of values.
+
+```go
+func main() {
+	sum := add(1, 2, 3, 5)
+	fmt.Println(sum)
+}
+
+func add(values ...int) int {
+	sum := 0
+
+	for _, v := range values {
+		sum += v
+	}
+
+	return sum
+}
+```
+
+Pretty cool huh? Also, don't worry about the `range` keyword, we will discuss it later in the course.
+
+_**Fun fact**: `fmt.Println` is a variadic function, that's how we were able to pass multiple values to it._
+
+## Init
+
+In Go, `init` is a special lifecycle function that is executed before the `main` function.
+
+Similar to `main`, the `init` function does not take any arguments nor returns any value. Let's see how it works with an example.
+
+```go
+package main
+
+import "fmt"
+
+func init() {
+	fmt.Println("Before main!")
+}
+
+func main() {
+	fmt.Println("Running main")
+}
+```
+
+As expected, the `init` function was executed before the `main` function.
+
+```bash
+$ go run main.go
+Before main!
+Running main
+```
+
+Unlike `main`, there can be more than one `init` function in single or multiple files.
+
+For multiple `init` in a single file, their processing is done in the order of their declaration, while `init` functions declared in multiple files are processed according to the lexicographic filename order.
+
+```go
+package main
+
+import "fmt"
+
+func init() {
+	fmt.Println("Before main!")
+}
+
+func init() {
+	fmt.Println("Hello again?")
+}
+
+func main() {
+	fmt.Println("Running main")
+}
+```
+
+And if we run this, we'll see the `init` functions were executed in the order they were declared.
+
+```bash
+$ go run main.go
+Before main!
+Hello again?
+Running main
+```
+
+The `init` function is optional and is particularly used for any global setup which might be essential for our program, such as establishing a database connection, fetching configuration files, setting up environment variables, etc.
+
+## Defer
+
+Lastly, let's discuss the `defer` keyword, which lets us postpones the execution of a function until the surrounding function returns.
+
+```go
+func main() {
+	defer fmt.Println("I am finished")
+	fmt.Println("Doing some work...")
+}
+```
+
+Can we use multiple defer functions? Absolutely, this brings us to what is known as _defer stack_. Let's take a look at an example:
+
+```go
+func main() {
+	defer fmt.Println("I am finished")
+	defer fmt.Println("Are you?")
+
+	fmt.Println("Doing some work...")
+}
+```
+
+```bash
+$ go run main.go
+Doing some work...
+Are you?
+I am finished
+```
+
+As we can see, defer statements are stacked and executed in a _last in first out_ manner.
+
+So, Defer is incredibly useful and is commonly used for doing cleanup or error handling.
+
+Functions can also be used with generics but we will discuss them later in the course.

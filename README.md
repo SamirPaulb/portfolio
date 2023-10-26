@@ -1,7 +1,7 @@
 # Build A Portfolio Website
 
 ### Visit: 
-👉  https://samirpaul1.github.io/portfolio  \
+👉  https://samirpaulb.github.io/portfolio  \
 👉  https://samirpaul.vercel.app  \
 👉  https://samirpaul.netlify.app    [![Netlify Status](https://api.netlify.com/api/v1/badges/02d7a02d-7fa3-4276-a0f3-d27420ccc0d6/deploy-status)](https://app.netlify.com/sites/samirpaul/deploys)
 
